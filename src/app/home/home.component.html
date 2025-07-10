@@ -1,0 +1,33 @@
+<div>
+<app-navbar></app-navbar>
+<div class="dashboard-container">
+  <div class="user-info">
+    <div>
+      <div class="user-name">{{ user.name }}</div>
+      <div class="user-account">Account: {{ user.account }}</div>
+    </div>
+    <div class="credit-card">
+      <div class="card-chip"></div>
+      <div class="card-number">{{ user.cardNumber }}</div>
+      <div class="card-expenses">
+        <span>Expenses</span>
+        <span class="amount">${{ user.expenses | number:'1.2-2' }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="transactions-section">
+    <h3>Transactions</h3>
+    <ul class="transactions-list">
+      <li *ngFor="let t of transactions" [class.income]="t.type === 'income'" [class.expense]="t.type === 'expense'">
+        <span class="desc">{{ t.description }}</span>
+        <span class="date">{{ t.date }}</span>
+        <span class="amount" [ngClass]="{'income': t.type === 'income', 'expense': t.type === 'expense'}">
+          {{ t.type === 'income' ? '+' : '-' }}${{ t.amount | number:'1.2-2' }}
+        </span>
+      </li>
+    </ul>
+  </div>
+</div>
+</div>
+

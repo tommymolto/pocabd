@@ -1,0 +1,24 @@
+<div>
+<app-navbar></app-navbar>
+<div class="savings-container">
+  <h2>Start a New Saving</h2>
+  <form [formGroup]="savingsForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="type">Type of Saving</label>
+      <select id="type" formControlName="type" required>
+        <option value="" disabled selected>Select type</option>
+        <option *ngFor="let t of savingTypes" [value]="t.value">{{ t.label }}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="value">Value</label>
+      <input id="value" type="number" min="0" formControlName="value" placeholder="Enter amount" required />
+    </div>
+    <div class="form-group checkbox-group">
+      <input id="recurrent" type="checkbox" formControlName="recurrent" />
+      <label for="recurrent">Recurrent Saving</label>
+    </div>
+    <button type="submit">Save</button>
+  </form>
+</div>
+</div>
